@@ -13,16 +13,16 @@ public class PlayerController : MonoBehaviour {
     Animator animator;
 
 	// Use this for initialization
-	void Start ()
+    void Start ()
     {
-	    animator = GetComponent<Animator>();
-	}
+    	animator = GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
-	void FixedUpdate ()
+    void FixedUpdate ()
     {
         manageMovement();
-	}
+    }
 
     void Flip()
     {
@@ -40,8 +40,6 @@ public class PlayerController : MonoBehaviour {
         bool leftWalk = Input.GetKey(KeyCode.LeftArrow);
         bool upWalk = Input.GetKey(KeyCode.UpArrow);
         bool downWalk = Input.GetKey(KeyCode.DownArrow);
-
-        bool keyIsDown = (rightWalk || leftWalk);
 
         if (rightWalk)
             GetComponent<Rigidbody2D>().velocity = new Vector2(MOVEMENT_SPEED, 0);
