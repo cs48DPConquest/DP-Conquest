@@ -13,12 +13,14 @@ public class PlayerController : MonoBehaviour {
     Animator animator;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 	    animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void FixedUpdate ()
+    {
         manageMovement();
 	}
 
@@ -34,33 +36,23 @@ public class PlayerController : MonoBehaviour {
 
     void manageMovement()
     {
-        float move = Input.GetAxis("Horizontal");
+        bool rightWalk = Input.GetKey(KeyCode.RightArrow);
+        bool leftWalk = Input.GetKey(KeyCode.LeftArrow);
+        bool upWalk = Input.GetKey(KeyCode.UpArrow);
+        bool downWalk = Input.GetKey(KeyCode.DownArrow);
 
-        bool leftWalk;
-        bool rightWalk;
-
-        animator.SetFloat("Speed", Mathf.Abs(move));
-
-        if (move > 0)
-        {
-            rightWalk = true;
-            leftWalk = false;
-        }
-        else if (move < 0)
-        {
-            leftWalk = true;
-            rightWalk = false;
-        }
-        else
-            leftWalk = rightWalk = false;
+        bool keyIsDown = (rightWalk || leftWalk);
 
         if (rightWalk)
-            GetComponent<Rigidbody2D>().velocity = new Vector2(MOVEMENT_SPEED, GetComponent<Rigidbody2D>().velocity.y);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(MOVEMENT_SPEED, 0);
         else if (leftWalk)
-            GetComponent<Rigidbody2D>().velocity = new Vector2(MOVEMENT_SPEED * -1, GetComponent<Rigidbody2D>().velocity.y);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(MOVEMENT_SPEED * -1, 0);
+        else if (upWalk)
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, MOVEMENT_SPEED);
+        else if (downWalk)
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, MOVEMENT_SPEED * -1);
         else
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
-
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
         if (rightWalk && !facingRight)
             Flip();
