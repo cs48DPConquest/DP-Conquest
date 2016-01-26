@@ -11,17 +11,24 @@ public class PlayerController : MonoBehaviour {
     bool facingLeft = false;
 
     Animator animator;
+	Rigidbody2D rigidBody;
 
 	// Use this for initialization
     void Start ()
     {
     	animator = GetComponent<Animator>();
+		rigidBody = GetComponent<Rigidbody2D>();
     }
-	
+
 	// Update is called once per frame
+	void Update() {
+
+	}
+
     void FixedUpdate ()
     {
-        manageMovement();
+    	// This is mostly for physics updates
+		manageMovement();
     }
 
     void Flip()
@@ -42,19 +49,19 @@ public class PlayerController : MonoBehaviour {
         bool downWalk = Input.GetKey(KeyCode.DownArrow);
 
         if (rightWalk)
-            GetComponent<Rigidbody2D>().velocity = new Vector2(MOVEMENT_SPEED, 0);
+			rigidBody.velocity = new Vector2(MOVEMENT_SPEED, 0);
         else if (leftWalk)
-            GetComponent<Rigidbody2D>().velocity = new Vector2(MOVEMENT_SPEED * -1, 0);
+			rigidBody.velocity = new Vector2(MOVEMENT_SPEED * -1, 0);
         else if (upWalk)
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, MOVEMENT_SPEED);
+			rigidBody.velocity = new Vector2(0, MOVEMENT_SPEED);
         else if (downWalk)
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, MOVEMENT_SPEED * -1);
+			rigidBody.velocity = new Vector2(0, MOVEMENT_SPEED * -1);
         else
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+			rigidBody.velocity = new Vector2(0, 0);
 
         if (rightWalk && !facingRight)
             Flip();
-        else if (!rightWalk && facingRight)
+		else if (leftWalk && facingRight)
             Flip();
     }
 }
