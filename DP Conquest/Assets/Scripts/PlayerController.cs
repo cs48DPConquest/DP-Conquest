@@ -50,7 +50,12 @@ public class PlayerController : MonoBehaviour {
         scale.x *= -1;
         transform.localScale = scale;
     }
-   
+
+    void checkMoving()
+    {
+        bool isMoving = (animator.GetBool("movingDown") || animator.GetBool("movingUp") || animator.GetBool("movingHoriz"));
+        animator.SetBool("moving", isMoving);
+    }
 
     void manageMovement()
     {
@@ -65,24 +70,32 @@ public class PlayerController : MonoBehaviour {
             {
                 //rigidBody.velocity = new Vector2(MOVEMENT_SPEED, 0);
                 animator.SetBool("movingHoriz", true);
+                animator.SetBool("movingDown", false);
+                animator.SetBool("movingUp", false);
                 rigidBody.MovePosition(rigidBody.position + X_Velocity*Time.deltaTime);
             }
             else if (leftWalk)
             {
                 //rigidBody.velocity = new Vector2(MOVEMENT_SPEED * -1, 0);
                 animator.SetBool("movingHoriz", true);
+                animator.SetBool("movingDown", false);
+                animator.SetBool("movingUp", false);
                 rigidBody.MovePosition(rigidBody.position - X_Velocity * Time.deltaTime);
             }
             else if (upWalk)
             {
                 //rigidBody.velocity = new Vector2(0, MOVEMENT_SPEED);
                 animator.SetBool("movingUp", true);
+                animator.SetBool("movingDown", false);
+                animator.SetBool("movingHoriz", false);
                 rigidBody.MovePosition(rigidBody.position + Y_Velocity * Time.deltaTime);
             }
             else if (downWalk)
             {
                 //rigidBody.velocity = new Vector2(0, MOVEMENT_SPEED * -1);
                 animator.SetBool("movingDown", true);
+                animator.SetBool("movingHoriz", false);
+                animator.SetBool("movingUp", false);
                 rigidBody.MovePosition(rigidBody.position - Y_Velocity * Time.deltaTime);
             }
             else
@@ -98,7 +111,7 @@ public class PlayerController : MonoBehaviour {
             Debug.Log("player bound false");
         }
 
-
+        checkMoving();
         if ((rightWalk && !facingRight) || (leftWalk && !facingLeft))
             horizFlip();
         
