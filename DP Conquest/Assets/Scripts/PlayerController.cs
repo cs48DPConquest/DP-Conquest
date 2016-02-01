@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour {
     private const int PLAYER_X_BOUND = 6;
     private const int PLAYER_Y_BOUND = 4;
 
-    //bool facingUp = false;
-    //bool facingDown = false;
+    bool facingUp = false;
+    bool facingDown = false;
     bool facingRight = true;
     bool facingLeft = false;
 
@@ -29,13 +29,10 @@ public class PlayerController : MonoBehaviour {
 	    rigidBody = GetComponent<Rigidbody2D>();
         //mapBoundary = new Vector2(Screen.width/2, Screen.height/2);
         mapBoundary = new Vector2(PLAYER_X_BOUND, PLAYER_Y_BOUND);
-
     }
 
 	// Update is called once per frame
-    void Update() {
-
-    }
+    void Update() {}
 
     void FixedUpdate ()
     {
@@ -43,19 +40,20 @@ public class PlayerController : MonoBehaviour {
         manageMovement();
     }
 
-    void Flip()
+    void horizFlip()
     {
+        facingDown = facingUp = false;
         facingRight = !facingRight;
         facingLeft = !facingLeft;
 
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
+   
 
     void manageMovement()
     {
-
         bool rightWalk = Input.GetKey(KeyCode.RightArrow);
         bool leftWalk = Input.GetKey(KeyCode.LeftArrow);
         bool upWalk = Input.GetKey(KeyCode.UpArrow);
@@ -66,26 +64,33 @@ public class PlayerController : MonoBehaviour {
             if (rightWalk)
             {
                 //rigidBody.velocity = new Vector2(MOVEMENT_SPEED, 0);
+                animator.SetBool("movingHoriz", true);
                 rigidBody.MovePosition(rigidBody.position + X_Velocity*Time.deltaTime);
             }
             else if (leftWalk)
             {
                 //rigidBody.velocity = new Vector2(MOVEMENT_SPEED * -1, 0);
+                animator.SetBool("movingHoriz", true);
                 rigidBody.MovePosition(rigidBody.position - X_Velocity * Time.deltaTime);
             }
             else if (upWalk)
             {
                 //rigidBody.velocity = new Vector2(0, MOVEMENT_SPEED);
+                animator.SetBool("movingUp", true);
                 rigidBody.MovePosition(rigidBody.position + Y_Velocity * Time.deltaTime);
             }
             else if (downWalk)
             {
                 //rigidBody.velocity = new Vector2(0, MOVEMENT_SPEED * -1);
+                animator.SetBool("movingDown", true);
                 rigidBody.MovePosition(rigidBody.position - Y_Velocity * Time.deltaTime);
             }
             else
             {
                 Debug.Log("not a valid movement");
+                animator.SetBool("movingUp", false);
+                animator.SetBool("movingDown", false);
+                animator.SetBool("movingHoriz", false);
             }
         }
         else
@@ -93,11 +98,9 @@ public class PlayerController : MonoBehaviour {
             Debug.Log("player bound false");
         }
 
-        
-        if (rightWalk && !facingRight)
-            Flip();
-        else if (leftWalk && facingRight)
-            Flip();
+
+        if ((rightWalk && !facingRight) || (leftWalk && !facingLeft))
+            horizFlip();
         
     }
 
