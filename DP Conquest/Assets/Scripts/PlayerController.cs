@@ -4,8 +4,8 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
     private const int MOVEMENT_SPEED = 3;
-    private const int PLAYER_X_BOUND = 6;
-    private const int PLAYER_Y_BOUND = 4;
+    private const float PLAYER_X_BOUND = (float) 6.00; //width of the map image divided by 2
+    private const float PLAYER_Y_BOUND = (float) 4.32; //height of the map image divided by 2
 
     bool facingUp = false;
     bool facingDown = false;
