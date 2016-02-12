@@ -16,7 +16,7 @@ public class CarController : EnemyController {
 		render = transform.GetComponent<SpriteRenderer>();
 		rigid = transform.GetComponent<Rigidbody2D>();
 		InvokeRepeating("RandomDrive", 2, 3);
-		speed = 5;
+		speed = 3;
 	}
 
 	void RandomDrive () {
