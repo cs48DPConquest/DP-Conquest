@@ -98,7 +98,6 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
-            Debug.Log("not a valid movement");
             animator.SetBool("movingUp", false);
             animator.SetBool("movingDown", false);
             animator.SetBool("movingHoriz", false);
@@ -112,6 +111,7 @@ public class PlayerController : MonoBehaviour {
 
     bool checkPlayerBounds()
     {
+		// This should be good to remove now that the colliders are up
         in_bounds = true;
     
        
