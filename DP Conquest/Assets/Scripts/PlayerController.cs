@@ -64,51 +64,44 @@ public class PlayerController : MonoBehaviour {
         bool upWalk = Input.GetKey(KeyCode.UpArrow);
         bool downWalk = Input.GetKey(KeyCode.DownArrow);
 
-        if (checkPlayerBounds()==true)
+        if (rightWalk)
         {
-            if (rightWalk)
-            {
-                //rigidBody.velocity = new Vector2(MOVEMENT_SPEED, 0);
-                animator.SetBool("movingHoriz", true);
-                animator.SetBool("movingDown", false);
-                animator.SetBool("movingUp", false);
-                rigidBody.MovePosition(rigidBody.position + X_Velocity*Time.deltaTime);
-            }
-            else if (leftWalk)
-            {
-                //rigidBody.velocity = new Vector2(MOVEMENT_SPEED * -1, 0);
-                animator.SetBool("movingHoriz", true);
-                animator.SetBool("movingDown", false);
-                animator.SetBool("movingUp", false);
-                rigidBody.MovePosition(rigidBody.position - X_Velocity * Time.deltaTime);
-            }
-            else if (upWalk)
-            {
-                //rigidBody.velocity = new Vector2(0, MOVEMENT_SPEED);
-                animator.SetBool("movingUp", true);
-                animator.SetBool("movingDown", false);
-                animator.SetBool("movingHoriz", false);
-                rigidBody.MovePosition(rigidBody.position + Y_Velocity * Time.deltaTime);
-            }
-            else if (downWalk)
-            {
-                //rigidBody.velocity = new Vector2(0, MOVEMENT_SPEED * -1);
-                animator.SetBool("movingDown", true);
-                animator.SetBool("movingHoriz", false);
-                animator.SetBool("movingUp", false);
-                rigidBody.MovePosition(rigidBody.position - Y_Velocity * Time.deltaTime);
-            }
-            else
-            {
-                Debug.Log("not a valid movement");
-                animator.SetBool("movingUp", false);
-                animator.SetBool("movingDown", false);
-                animator.SetBool("movingHoriz", false);
-            }
+            //rigidBody.velocity = new Vector2(MOVEMENT_SPEED, 0);
+            animator.SetBool("movingHoriz", true);
+            animator.SetBool("movingDown", false);
+            animator.SetBool("movingUp", false);
+            rigidBody.MovePosition(rigidBody.position + X_Velocity*Time.deltaTime);
+        }
+        else if (leftWalk)
+        {
+            //rigidBody.velocity = new Vector2(MOVEMENT_SPEED * -1, 0);
+            animator.SetBool("movingHoriz", true);
+            animator.SetBool("movingDown", false);
+            animator.SetBool("movingUp", false);
+            rigidBody.MovePosition(rigidBody.position - X_Velocity * Time.deltaTime);
+        }
+        else if (upWalk)
+        {
+            //rigidBody.velocity = new Vector2(0, MOVEMENT_SPEED);
+            animator.SetBool("movingUp", true);
+            animator.SetBool("movingDown", false);
+            animator.SetBool("movingHoriz", false);
+            rigidBody.MovePosition(rigidBody.position + Y_Velocity * Time.deltaTime);
+        }
+        else if (downWalk)
+        {
+            //rigidBody.velocity = new Vector2(0, MOVEMENT_SPEED * -1);
+            animator.SetBool("movingDown", true);
+            animator.SetBool("movingHoriz", false);
+            animator.SetBool("movingUp", false);
+            rigidBody.MovePosition(rigidBody.position - Y_Velocity * Time.deltaTime);
         }
         else
         {
-            Debug.Log("player bound false");
+            Debug.Log("not a valid movement");
+            animator.SetBool("movingUp", false);
+            animator.SetBool("movingDown", false);
+            animator.SetBool("movingHoriz", false);
         }
 
         checkMoving();

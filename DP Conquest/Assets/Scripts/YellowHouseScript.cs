@@ -19,9 +19,10 @@ public class YellowHouseScript : MonoBehaviour {
 
     public string gameType;
 
-    void OnTriggerEnter2D(Collider2D player)
+    void OnTriggerEnter2D(Collider2D hit)
     { 
-        SceneManager.LoadScene(gameType);
+		if (hit.tag == "Player")
+        	SceneManager.LoadScene(gameType);
     } 
 
 
