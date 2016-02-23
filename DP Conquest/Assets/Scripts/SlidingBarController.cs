@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 public class SlidingBarController : MonoBehaviour {
 
     private Rigidbody2D rigidBody;
-    private const float X_BOUND = 6.00f;
+    private const float X_BOUND = 4.00f;
     private float dx = 0.15f;
     private bool isPressed = false;
     private bool moving = true;
     private bool movingRight = true;
     private int numWins = 0;
     private int numLosses = 0;
+    private int successRate = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -51,7 +52,7 @@ public class SlidingBarController : MonoBehaviour {
         {
             moving = false;
             dx = 0.0f;
-            numLosses++;
+            AssignWinOrLoss();
         }
         else if (isPressed && !moving)
         {
@@ -61,6 +62,16 @@ public class SlidingBarController : MonoBehaviour {
             else
                 dx = -0.15f;
         }
+    }
+
+    private void AssignWinOrLoss()
+    {
+        System.Random random = new System.Random();
+        bool winning = (random.Next(1,successRate) == 1);
+        if (winning)
+            numWins++;
+        else
+            numLosses++;
     }
 
     private void CheckVictory()
@@ -75,5 +86,19 @@ public class SlidingBarController : MonoBehaviour {
             PlayerController.BAC += 5;
             SceneManager.LoadScene("MainGameScene");
         }
+    }
+
+    public void OnTriggerEnter2D(Collider2D zone)
+    {
+        if (zone.tag == "GoalZone")
+            successRate = 2;
+        else if (zone.tag == "GoodZone")
+            successRate = 3;
+        else if (zone.tag == "OkayZone")
+            successRate = 5;
+        else
+            successRate = 11;
+
+        Debug.Log(successRate);
     }
 }

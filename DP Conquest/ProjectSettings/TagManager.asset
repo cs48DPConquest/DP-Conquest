@@ -7,6 +7,10 @@ TagManager:
   - Boundary
   - Vehicle
   - boundary
+  - GoalZone
+  - GoodZone
+  - OkayZone
+  - BadZone
   layers:
   - Default
   - TransparentFX
