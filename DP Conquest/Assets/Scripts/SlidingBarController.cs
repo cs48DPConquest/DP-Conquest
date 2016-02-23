@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class SlidingBarController : MonoBehaviour {
 
     private Rigidbody2D rigidBody;
-    private const float X_BOUND = 4.00f;
+    private const float X_BOUND = 5.75f;
     private float dx = 0.15f;
     private bool isPressed = false;
     private bool moving = true;
@@ -91,14 +91,14 @@ public class SlidingBarController : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D zone)
     {
         if (zone.tag == "GoalZone")
-            successRate = 2;
+            successRate = 2; //guaranteed success
         else if (zone.tag == "GoodZone")
-            successRate = 3;
+            successRate = 3; //50-50 shot at success
         else if (zone.tag == "OkayZone")
-            successRate = 5;
+            successRate = 5; //25% chance of success
+        else if (zone.tag == "BadZone")
+            successRate = 11; //10% chance of success
         else
-            successRate = 11;
-
-        Debug.Log(successRate);
+            successRate = 10000; //basically 0% chance of success but idk how to do that lol
     }
 }
