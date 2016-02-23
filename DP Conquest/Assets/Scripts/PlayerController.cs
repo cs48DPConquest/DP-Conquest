@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /*
  * Sets player’s movement speed, direction, and view based on user arrow press. 
@@ -10,21 +12,16 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
     private const int MOVEMENT_SPEED = 3; //player velocity
-    private const float PLAYER_X_BOUND = (float) 6.00; //width of the map image divided by 2
-    private const float PLAYER_Y_BOUND = (float) 4.32; //height of the map image divided by 2
+    public static int BAC = 0;
 
 	// Default false until player presses arrow key; determines direction of the character 
     private bool facingUp = false; 
     private bool facingDown = false;
     private bool facingRight = true;
     private bool facingLeft = false;
-	// if player is in bounds, true
-    private bool in_bounds = false;
-
 
     private Animator animator; // keeps track of movement frames    Rigidbody2D rigidBody;
 	private Rigidbody2D rigidBody; //allows player to be solid, used to retrieve player's position
-    private Vector2 mapBoundary; // sets x and y mapboundaries
 
     private Vector2 X_Velocity = new Vector2(MOVEMENT_SPEED, 0); //x direction velocity
     private Vector2 Y_Velocity = new Vector2(0, MOVEMENT_SPEED); //y direction velocity
@@ -35,12 +32,17 @@ public class PlayerController : MonoBehaviour {
 		//set with retrieved component of type Animator and RigidBody2D
     	animator = GetComponent<Animator>();
 	    rigidBody = GetComponent<Rigidbody2D>();
-        //mapBoundary = new Vector2(Screen.width/2, Screen.height/2);
-        mapBoundary = new Vector2(PLAYER_X_BOUND, PLAYER_Y_BOUND);
     }
 
 	// Update is called once per frame
-    private void Update() {}
+    private void Update()
+    {
+        if (gameLoss())
+        {
+            SceneManager.LoadScene("TitleScreenScene");
+            BAC = 0;
+        }
+    }
 
 	// This is mostly for physics updates
     private void FixedUpdate ()
@@ -137,42 +139,8 @@ public class PlayerController : MonoBehaviour {
         
     }
 
-	/*
-	 * Gets the character’s position and checks if the character has exceeded bounds on the map. 
-	 * Updates the new position of the character to the map bounds and sets in_bounds to false if so. 
-	 * */
-	//Precondition: Player is in motion
-	//Postcondition: returns whether or not the player is moving in bounds and stops the player if they are out of bounds.
-    private bool checkPlayerBounds()
+    private bool gameLoss()
     {
-		// This should be good to remove now that the colliders are up
-        in_bounds = true;
-    
-       
-        if (rigidBody.position.x > mapBoundary.x)
-        {
-            rigidBody.position = new Vector2(mapBoundary.x, rigidBody.position.y);
-            in_bounds = false;
-        }
-        else if (rigidBody.position.x < mapBoundary.x * -1)
-        {
-            rigidBody.position = new Vector2(mapBoundary.x * -1, rigidBody.position.y);
-            in_bounds = false;
-        }
-        else if (rigidBody.position.y > mapBoundary.y)
-        {
-            rigidBody.position = new Vector2(rigidBody.position.x, mapBoundary.y);
-            in_bounds = false;
-        }
-        else if (rigidBody.position.y < mapBoundary.y * -1)
-        {
-            rigidBody.position = new Vector2(rigidBody.position.x, mapBoundary.y * -1);
-            in_bounds = false;
-        }
-
-        return in_bounds;
-
+        return (BAC >= 30);
     }
-
-
 }

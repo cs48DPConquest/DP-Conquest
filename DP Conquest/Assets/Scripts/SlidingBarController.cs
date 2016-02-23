@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SlidingBarController : MonoBehaviour {
 
@@ -9,16 +10,21 @@ public class SlidingBarController : MonoBehaviour {
     private bool isClicked = false;
     private bool moving = true;
     private bool movingRight = true;
+    private int numWins = 0;
+    private int numLosses = 0;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         rigidBody = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         UpdateClicked();
         MoveBar();
+        CheckVictory();
 	}
 
     private void MoveBar()
@@ -45,6 +51,7 @@ public class SlidingBarController : MonoBehaviour {
         {
             moving = false;
             dx = 0.0f;
+            numLosses++;
         }
         else if (isClicked && !moving)
         {
@@ -53,6 +60,20 @@ public class SlidingBarController : MonoBehaviour {
                 dx = 0.15f;
             else
                 dx = -0.15f;
+        }
+    }
+
+    private void CheckVictory()
+    {
+        if (numLosses >= 3)
+        {
+            PlayerController.BAC += 10;
+            SceneManager.LoadScene("MiniGameLossScene");
+        }
+        else if (numWins >= 3)
+        {
+            PlayerController.BAC += 5;
+            SceneManager.LoadScene("MainGameScene");
         }
     }
 }

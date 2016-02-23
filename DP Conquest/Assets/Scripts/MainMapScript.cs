@@ -16,11 +16,20 @@ public class MainMapScript : MonoBehaviour {
 	//Postcondition: returns to main game scene
     public void onMapButtonPress()
     {
-
-        SceneManager.LoadScene("MainGameScene");
+        if (PlayerController.BAC < 30)
+            SceneManager.LoadScene("MainGameScene");
+        else
+        {
+            PlayerController.BAC = 0;
+            SceneManager.LoadScene("TitleScreenScene");
+        }
 
     }
 
+    public void onQuitButtonPress()
+    {
+        Application.Quit();
+    }
 	/*
 	 * Called on the frame of the object’s creation and overrides the MonoBehaviour.Start() method.
 	 * Currently does nothing but functionality may be included later.

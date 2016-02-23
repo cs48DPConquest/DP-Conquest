@@ -53,8 +53,9 @@ public class CarController : EnemyController {
 	//Postcondition: Car rotates on collision with player
 	public void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "Player") {
-			// Rotate while driving in the same direction. Add to BAC (doesn't yet)
+			// Rotate while driving in the same direction. Add to BAC
 			rigid.AddTorque(20);
+            PlayerController.BAC += 5;
 		}
 	}
 
