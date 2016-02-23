@@ -7,7 +7,7 @@ public class SlidingBarController : MonoBehaviour {
     private Rigidbody2D rigidBody;
     private const float X_BOUND = 6.00f;
     private float dx = 0.15f;
-    private bool isClicked = false;
+    private bool isPressed = false;
     private bool moving = true;
     private bool movingRight = true;
     private int numWins = 0;
@@ -46,14 +46,14 @@ public class SlidingBarController : MonoBehaviour {
 
     private void UpdateClicked()
     {
-        isClicked = Input.GetMouseButtonDown(0);
-        if (isClicked && moving)
+        isPressed = Input.GetKeyDown(KeyCode.Space);
+        if (isPressed && moving)
         {
             moving = false;
             dx = 0.0f;
             numLosses++;
         }
-        else if (isClicked && !moving)
+        else if (isPressed && !moving)
         {
             moving = true;
             if (movingRight)
