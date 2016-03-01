@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/Scenes/BeerDieMiniGame.unity
   - enabled: 1
     path: Assets/Scenes/MiniGameLossScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Pong_miniGame.unity

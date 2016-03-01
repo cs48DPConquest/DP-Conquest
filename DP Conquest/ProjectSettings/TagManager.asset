@@ -11,6 +11,11 @@ TagManager:
   - GoodZone
   - OkayZone
   - BadZone
+  - Ball
+  - RedCup_paddle
+  - leftTrigger
+  - rightTrigger
+  - midTrigger
   layers:
   - Default
   - TransparentFX
