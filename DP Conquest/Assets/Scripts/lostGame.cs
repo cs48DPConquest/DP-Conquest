@@ -18,6 +18,7 @@ public class lostGame : MonoBehaviour {
 		if(isOver == true)
 		{
 			Destroy (cup);
+            Goals.g = 0;
 			PlayerController.BAC += 10;
 			SceneManager.LoadScene("MiniGameLossScene");
 		}
