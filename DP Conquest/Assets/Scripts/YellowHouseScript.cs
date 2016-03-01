@@ -21,7 +21,9 @@ public class YellowHouseScript : MonoBehaviour {
     // note game levels not yet implemented
 
 	//Determines type of game to be loaded
-    public string gameType;
+    public string gameType1;
+	public string gameType2;
+
 
 	//If object that was collide with was the character, starts minigame. 
 	//Precondition: Player is in main game scene
@@ -29,7 +31,7 @@ public class YellowHouseScript : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D hit)
     { 
 		if (hit.tag == "Player")
-        	SceneManager.LoadScene(gameType);
+        	SceneManager.LoadScene(gameType1);
     } 
 
 	//Currently unimplemented.
