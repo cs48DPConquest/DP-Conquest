@@ -20,6 +20,7 @@ public class lostGame : MonoBehaviour {
 			Destroy (cup);
             Goals.g = 0;
 			PlayerController.BAC += 10;
+            PlayerController.TotalGames += 1;
 			SceneManager.LoadScene("MiniGameLossScene");
 		}
 	}

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
 
     private const int MOVEMENT_SPEED = 3; //player velocity
     public static int BAC = 0;
+    public static int TotalGames = 0;
 
 	// Default false until player presses arrow key; determines direction of the character 
     private bool facingUp = false; 
@@ -39,9 +40,20 @@ public class PlayerController : MonoBehaviour {
     {
         if (gameLoss())
         {
-            SceneManager.LoadScene("TitleScreenScene");
+            SceneManager.LoadScene("LosingScene");
             BAC = 0;
+            TotalGames = 0;
         }
+
+        if (TotalGames >= 4)
+        {
+            SceneManager.LoadScene("WinningScene");
+            BAC = 0;
+            TotalGames = 0;
+        }
+
+
+
     }
 
 	// This is mostly for physics updates

@@ -21,7 +21,8 @@ public class MainMapScript : MonoBehaviour {
         else
         {
             PlayerController.BAC = 0;
-            SceneManager.LoadScene("TitleScreenScene");
+            PlayerController.TotalGames = 0;
+            SceneManager.LoadScene("LosingScene");
         }
 
     }

@@ -79,11 +79,13 @@ public class SlidingBarController : MonoBehaviour {
         if (numLosses >= 3)
         {
             PlayerController.BAC += 10;
+            PlayerController.TotalGames += 1;
             SceneManager.LoadScene("MiniGameLossScene");
         }
         else if (numWins >= 3)
         {
             PlayerController.BAC += 5;
+            PlayerController.TotalGames += 1;
             SceneManager.LoadScene("MainGameScene");
         }
     }
