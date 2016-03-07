@@ -8,8 +8,6 @@ public class BallController : MonoBehaviour {
 	bool isOn;
 	int rando;
 
-	public Vector3 ballPos;
-	float xcoor;
 
 	void Awake () {
 		rb = gameObject.GetComponent<Rigidbody> ();
