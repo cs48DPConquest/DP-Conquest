@@ -37,6 +37,12 @@ public class MainMapScript : MonoBehaviour {
     {
         Application.Quit();
     }
+
+    public void onExitButtonPress()
+    {
+        SceneManager.LoadScene("TitleScreenScene");
+    }
+
 	/*
 	 * Called on the frame of the object’s creation and overrides the MonoBehaviour.Start() method.
 	 * Currently does nothing but functionality may be included later.

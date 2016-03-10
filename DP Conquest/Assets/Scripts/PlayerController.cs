@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 /*
  * Sets player’s movement speed, direction, and view based on user arrow press. 

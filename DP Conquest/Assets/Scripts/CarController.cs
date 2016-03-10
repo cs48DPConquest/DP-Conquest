@@ -10,7 +10,6 @@ public class CarController : EnemyController {
 
 	private bool facingDown = true; //determines car's orientation and side of screen car appears from
 	private bool moving = false; //if car is moving, true
-	private bool rotating = false; //if car is rotating
 
 	private SpriteRenderer render; //Helps render car on map
 	private Rigidbody2D rigid; //Makes car a solid object on screen 
