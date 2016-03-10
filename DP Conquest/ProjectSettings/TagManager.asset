@@ -16,6 +16,8 @@ TagManager:
   - leftTrigger
   - rightTrigger
   - midTrigger
+  - SuccessText
+  - FailText
   layers:
   - Default
   - TransparentFX

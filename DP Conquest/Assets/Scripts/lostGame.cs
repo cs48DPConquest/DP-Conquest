@@ -6,29 +6,25 @@ public class lostGame : MonoBehaviour {
 
 	GameObject ball;
 	GameObject cup;
-	bool isOver;
 
+    void Start()
+    {
+        ball = GameObject.FindGameObjectWithTag("Ball");
+        cup = GameObject.FindGameObjectWithTag("RedCup_paddle");
+    }
 
 	void Update ()
 	{
-
-		ball = GameObject.FindGameObjectWithTag ("Ball");
-		cup = GameObject.FindGameObjectWithTag ("RedCup_paddle");
-
-		if(isOver == true)
+		if(BeerPongGoals.isOver == true)
 		{
-			Destroy (cup);
-            Goals.g = 0;
-			PlayerController.BAC += 10;
-            PlayerController.TotalGames += 1;
-			SceneManager.LoadScene("MiniGameLossScene");
+			Destroy(cup);
 		}
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Ball") {
-			isOver = true;
+            BeerPongGoals.isOver = true;
 			Destroy (ball);
 		}
 	}

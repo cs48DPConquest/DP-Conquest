@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SlidingBarController : MonoBehaviour {
 
@@ -25,9 +26,8 @@ public class SlidingBarController : MonoBehaviour {
     {
         UpdateClicked();
         MoveBar();
-        CheckVictory();
 	}
-
+    
     private void MoveBar()
     {
         if (rigidBody.position.x >= X_BOUND)
@@ -61,32 +61,25 @@ public class SlidingBarController : MonoBehaviour {
                 dx = 0.15f;
             else
                 dx = -0.15f;
+            MinigameTextController.showFailText = MinigameTextController.showSuccessText = false;
         }
     }
 
     private void AssignWinOrLoss()
     {
         System.Random random = new System.Random();
-        bool winning = (random.Next(1,successRate) == 1);
+        bool winning = (random.Next(1, successRate) == 1);
         if (winning)
-            numWins++;
-        else
-            numLosses++;
-    }
-
-    private void CheckVictory()
-    {
-        if (numLosses >= 3)
         {
-            PlayerController.BAC += 10;
-            PlayerController.TotalGames += 1;
-            SceneManager.LoadScene("MiniGameLossScene");
+            FlipCupGoals.numWins++;
+            MinigameTextController.showSuccessText = true;
+            MinigameTextController.showFailText = false;
         }
-        else if (numWins >= 3)
+        else
         {
-            PlayerController.BAC += 5;
-            PlayerController.TotalGames += 1;
-            SceneManager.LoadScene("MainGameScene");
+            FlipCupGoals.numLosses++;
+            MinigameTextController.showSuccessText = false;
+            MinigameTextController.showFailText = true;
         }
     }
 

@@ -374,8 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2cfc0cc87e3114484778734201fca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameType1: Pong_miniGame
-  gameType2: BeerDieMiniGame
+  gameType1: PongMiniGameScene
+  gameType2: FlipCupMiniGameScene
 --- !u!114 &251039212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,8 +1151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2cfc0cc87e3114484778734201fca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameType1: Pong_miniGame
-  gameType2: BeerDieMiniGame
+  gameType1: PongMiniGameScene
+  gameType2: FlipCupMiniGameScene
 --- !u!114 &621156017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2130,8 +2130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2cfc0cc87e3114484778734201fca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameType1: BeerDieMiniGame
-  gameType2: Pong_miniGame
+  gameType1: FlipCupMiniGameScene
+  gameType2: PongMiniGameScene
 --- !u!61 &1728110354
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2428,8 +2428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2cfc0cc87e3114484778734201fca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameType1: BeerDieMiniGame
-  gameType2: Pong_miniGame
+  gameType1: FlipCupMiniGameScene
+  gameType2: PongMiniGameScene
 --- !u!114 &2071362770
 MonoBehaviour:
   m_ObjectHideFlags: 0

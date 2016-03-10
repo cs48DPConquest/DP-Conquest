@@ -6,7 +6,7 @@ public class cups : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Ball") {
-			Goals.g += 1;
+			FlipCupGoals.numWins += 1;
 			Destroy (gameObject);
 		}
 	}
