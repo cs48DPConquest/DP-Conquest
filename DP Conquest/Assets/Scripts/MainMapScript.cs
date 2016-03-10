@@ -40,6 +40,7 @@ public class MainMapScript : MonoBehaviour {
 
     public void onExitButtonPress()
     {
+        PlayerController.BAC = PlayerController.TotalGames = 0;
         SceneManager.LoadScene("TitleScreenScene");
     }
 
