@@ -16,7 +16,13 @@ public class MainMapScript : MonoBehaviour {
 	//Postcondition: returns to main game scene
     public void onMapButtonPress()
     {
-        if (PlayerController.BAC < 30)
+        if (PlayerController.TotalGames >= 4 && PlayerController.BAC <= 35)
+        {
+            PlayerController.BAC = 0;
+            PlayerController.TotalGames = 0;
+            SceneManager.LoadScene("WinningScene");
+        }
+        else if (PlayerController.BAC < 30)
             SceneManager.LoadScene("MainGameScene");
         else
         {

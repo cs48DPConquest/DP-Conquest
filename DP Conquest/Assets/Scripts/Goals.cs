@@ -6,7 +6,8 @@ public abstract class Goals : MonoBehaviour {
 	public static int numWins=0;
     // Update is called once per frame
 
-	void Update () {
+	void Update ()
+    {
 		CheckWin ();
 	}
 

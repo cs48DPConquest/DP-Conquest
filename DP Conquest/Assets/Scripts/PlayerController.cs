@@ -15,9 +15,7 @@ public class PlayerController : MonoBehaviour {
     public static int BAC = 0;
     public static int TotalGames = 0;
 
-	// Default false until player presses arrow key; determines direction of the character 
-    private bool facingUp = false; 
-    private bool facingDown = false;
+	// Default false until player presses arrow key; determines direction of the character horizontally
     private bool facingRight = true;
     private bool facingLeft = false;
 
@@ -44,16 +42,6 @@ public class PlayerController : MonoBehaviour {
             BAC = 0;
             TotalGames = 0;
         }
-
-        if (TotalGames >= 4)
-        {
-            SceneManager.LoadScene("WinningScene");
-            BAC = 0;
-            TotalGames = 0;
-        }
-
-
-
     }
 
 	// This is mostly for physics updates
@@ -70,7 +58,6 @@ public class PlayerController : MonoBehaviour {
 	//Postcondition: Player sprite is flipped to account for new direction
     private void horizFlip()
     {
-        facingDown = facingUp = false;
         facingRight = !facingRight;
         facingLeft = !facingLeft;
 

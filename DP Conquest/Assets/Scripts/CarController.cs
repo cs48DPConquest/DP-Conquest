@@ -29,8 +29,8 @@ public class CarController : EnemyController {
 	private void RandomDrive () {
 		if (!moving) {
 			float random = Random.value;
-			//car has 0.25 chance of appearing
-			if (random <= .25) {
+			//car has 0.5 chance of appearing
+			if (random <= .5) {
 				// Make car visible and start moving
 				Vector2 vSpeed = new Vector2(0, 0);
 				//match car's speed up or down the page to its pictoral orientation

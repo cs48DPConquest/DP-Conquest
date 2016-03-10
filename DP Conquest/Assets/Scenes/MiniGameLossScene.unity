@@ -255,7 +255,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Okay
+  m_Text: Aww...
 --- !u!222 &925793538
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -379,8 +379,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 30}
+  m_AnchoredPosition: {x: 0, y: -19.1}
+  m_SizeDelta: {x: 250, y: 68.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1920002608
 MonoBehaviour:
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6985294, g: 0.6985294, b: 0.6985294, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -408,7 +408,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -416,7 +416,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'You lost the drinking game.
 
-    Your BAC increases by .10.'
+    Your BAC increases by .10 since you drank so much.'
 --- !u!222 &1920002609
 CanvasRenderer:
   m_ObjectHideFlags: 0
