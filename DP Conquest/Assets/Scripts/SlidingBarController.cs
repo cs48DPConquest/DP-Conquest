@@ -11,8 +11,6 @@ public class SlidingBarController : MonoBehaviour {
     private bool isPressed = false;
     private bool moving = true;
     private bool movingRight = true;
-    private int numWins = 0;
-    private int numLosses = 0;
     private int successRate = 0;
 
 	// Use this for initialization
@@ -71,7 +69,7 @@ public class SlidingBarController : MonoBehaviour {
         bool winning = (random.Next(1, successRate) == 1);
         if (winning)
         {
-            FlipCupGoals.numWins++;
+            Goals.numWins++;
             MinigameTextController.showSuccessText = true;
             MinigameTextController.showFailText = false;
         }
