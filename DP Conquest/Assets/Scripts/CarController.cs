@@ -6,7 +6,8 @@ using System.Collections;
  * 
  */
 
-public class CarController : EnemyController {
+public class CarController : EnemyController
+{
 
 	private bool facingDown = true; //determines car's orientation and side of screen car appears from
 	private bool moving = false; //if car is moving, true
@@ -14,10 +15,11 @@ public class CarController : EnemyController {
 	private SpriteRenderer render; //Helps render car on map
 	private Rigidbody2D rigid; //Makes car a solid object on screen 
 	private int speed; //regeneration time
-    AudioSource tireScreech;
+    AudioSource tireScreech; //The object representing the screech sound effect
 
 	// Use this for initialization
-	private void Start () {
+	private void Start ()
+    {
 		//set with retrieved components of type SpriteRenderer and Rigidbody2D 
 		render = transform.GetComponent<SpriteRenderer>();
 		rigid = transform.GetComponent<Rigidbody2D>();
@@ -25,10 +27,11 @@ public class CarController : EnemyController {
 		InvokeRepeating("RandomDrive", 2, 3);
 		speed = 3;
 
-        tireScreech = GetComponent<AudioSource>();
+        tireScreech = GetComponent<AudioSource>(); //get the screen sound effect
 	}
 
-	private void RandomDrive () {
+	private void RandomDrive ()
+    {
 		if (!moving) {
 			float random = Random.value;
 			//car has 0.5 chance of appearing
@@ -53,19 +56,21 @@ public class CarController : EnemyController {
 	//If car collides with player make car swerve
 	//Precondition: Car is initialized
 	//Postcondition: Car rotates on collision with player
-	public void OnTriggerEnter2D(Collider2D other) {
+	public void OnTriggerEnter2D(Collider2D other)
+    {
 		if (other.tag == "Player") {
 			// Rotate while driving in the same direction. Add to BAC
 			rigid.AddTorque(20);
             PlayerController.BAC += 5;
-            tireScreech.Play();
+            tireScreech.Play(); //play the screech sound effect when hit
 		}
 	}
 
 	//If car exits map, trigger events
 	//Precondition: Car is driving on the road
 	//Postcondition: Car despawns on collision with boundaries
-	public void OnTriggerExit2D(Collider2D other) {
+	public void OnTriggerExit2D(Collider2D other)
+    {
 		Debug.Log(other.name);
 		//switch so that the next orientation 
 		if ((facingDown && other.name == "Bottom") || (!facingDown && other.name == "Top")) {

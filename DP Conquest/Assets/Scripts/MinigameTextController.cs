@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MinigameTextController : MonoBehaviour {
-
+public class MinigameTextController : MonoBehaviour
+{
     public static bool showSuccessText;
     public static bool showFailText;
     private GameObject successImg;
     private GameObject failImg;
 
+    //Initializes all member variables
+    //Precondition: None
+    //Postcondition: Initializes all variables, sets default to not display images
     private void Start()
     {
         successImg = GameObject.FindGameObjectWithTag("SuccessText");
@@ -16,6 +19,12 @@ public class MinigameTextController : MonoBehaviour {
         showFailText = false;
         showSuccessText = false;
     }
+
+    /* A function called once perframe
+     * Controls the display of the success and fail images
+     * Precondition: Player is in FlipCupMinigame
+     * Postcondition: Success or failure is displayed depending on player status
+     */
 
     private void Update()
     {

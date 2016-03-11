@@ -8,11 +8,12 @@ using UnityEngine.SceneManagement;
  * 
  */
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     private const int MOVEMENT_SPEED = 3; //player velocity
     public static int BAC = 0;
-    public static int TotalGames = 0;
+    public static int TotalGames = 0; //Represents the number of games the player has played
 
 	// Default false until player presses arrow key; determines direction of the character horizontally
     private bool facingRight = true;
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour {
     private Vector2 Y_Velocity = new Vector2(0, MOVEMENT_SPEED); //y direction velocity
 
     // Use this for initialization
+    // Precondition: Game is started
+    // Postcondition: animator and rigidBody have been initialized with the character's properties
     private void Start ()
     {
 		//set with retrieved component of type Animator and RigidBody2D
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour {
     }
 
 	// Update is called once per frame
+    // Just checks to see if the game is lost
     private void Update()
     {
         if (gameLoss())
@@ -137,6 +141,8 @@ public class PlayerController : MonoBehaviour {
         
     }
 
+    // Helper function
+    // Returns whether or not the game has been lost yet
     private bool gameLoss()
     {
         return (BAC >= 30);

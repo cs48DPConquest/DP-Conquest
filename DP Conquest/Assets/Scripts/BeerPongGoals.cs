@@ -5,8 +5,18 @@ using System;
 
 public class BeerPongGoals : Goals
 {
-    public static bool isOver = false;
+    //This class inherits from the parent class Goals
+    //The Start() method is inherited as well as the numWins variable
 
+    public static bool isOver = false; //tells whether or not the game is over
+
+    /* Function to check whether or not the beer pong game is over
+     * Overridden from the generic CheckWin() method in Goals.cs
+     * 
+     * Preconditions: Game has been started
+     * Postconditions: Game continues if 6 cups have been destroyed
+     * otherwise it keeps going
+     */
     protected override void CheckWin()
     {
         if (numWins >= 6)
