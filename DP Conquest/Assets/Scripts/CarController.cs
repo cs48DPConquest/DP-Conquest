@@ -14,6 +14,7 @@ public class CarController : EnemyController {
 	private SpriteRenderer render; //Helps render car on map
 	private Rigidbody2D rigid; //Makes car a solid object on screen 
 	private int speed; //regeneration time
+    AudioSource tireScreech;
 
 	// Use this for initialization
 	private void Start () {
@@ -23,6 +24,8 @@ public class CarController : EnemyController {
 		// continuously call RandomDrive every 3 seconds
 		InvokeRepeating("RandomDrive", 2, 3);
 		speed = 3;
+
+        tireScreech = GetComponent<AudioSource>();
 	}
 
 	private void RandomDrive () {
@@ -55,6 +58,7 @@ public class CarController : EnemyController {
 			// Rotate while driving in the same direction. Add to BAC
 			rigid.AddTorque(20);
             PlayerController.BAC += 5;
+            tireScreech.Play();
 		}
 	}
 
