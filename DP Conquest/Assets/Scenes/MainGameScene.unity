@@ -173,7 +173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cbef6d0bb7c4d1eabe73f033c956c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sober: 100
   newBAC: 0
   Life: {fileID: 61599950}
 --- !u!114 &61599953
@@ -1808,7 +1807,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1209210609}
-  - 114: {fileID: 1209210608}
   - 82: {fileID: 1209210607}
   m_Layer: 0
   m_Name: GameManager
@@ -1891,17 +1889,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &1209210608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1209210606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eff7dcafe18e422a82fea1ca4e752f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1209210609
 Transform:
   m_ObjectHideFlags: 0
