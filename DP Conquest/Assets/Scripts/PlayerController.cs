@@ -41,9 +41,10 @@ public class PlayerController : MonoBehaviour
     {
         if (gameLoss())
         {
-            SceneManager.LoadScene("LosingScene");
             BAC = 0;
             TotalGames = 0;
+            HouseScript.triggerTags = null;
+            SceneManager.LoadScene("LosingScene");
         }
     }
 
