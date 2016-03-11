@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class cups : MonoBehaviour {
+public class Cups : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class flipCupController : MonoBehaviour {
+public class FlipCupController : MonoBehaviour {
 
 	public float spin = 190f; //200??
 	private bool movingRight = true;

@@ -2,10 +2,16 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class PauseMenu : MonoBehaviour
+public class MapBehavior : MonoBehaviour
 {
 
-    private void Start() { }
+    private void Start()
+    {
+        foreach (string tag in HouseScript.triggerTags)
+        {
+            Destroy(GameObject.FindGameObjectWithTag(tag));
+        }
+    }
 
     private void Update()
     {

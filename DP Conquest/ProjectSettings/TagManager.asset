@@ -18,6 +18,10 @@ TagManager:
   - midTrigger
   - SuccessText
   - FailText
+  - HouseTrig1
+  - HouseTrig2
+  - HouseTrig3
+  - HouseTrig4
   layers:
   - Default
   - TransparentFX
